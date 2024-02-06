@@ -21,14 +21,17 @@ module.exports = () => {
       }),
       new InjectManifest({
         swSrc: "./src-sw.js",
-        swDest: "service-worker.js",
+        swDest: "src-sw.js",
       }),
       new WebpackPwaManifest({
+        fingerprints: false,
+        inject: true,
         name: "My Progressive Web App",
         short_name: "MyPWA",
         description: "My awesome Progressive Web App!",
         background_color: "#ffffff",
-        crossorigin: "use-credentials", //can be null, use-credentials or anonymous
+        start_url: "/",
+        publicPath: "/",
         icons: [
           {
             src: path.resolve("src/images/logo.png"),
